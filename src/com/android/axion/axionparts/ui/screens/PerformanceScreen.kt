@@ -34,6 +34,7 @@ import androidx.compose.material.icons.filled.Sensors
 import androidx.compose.material.icons.filled.Speed
 import androidx.compose.material.icons.outlined.Apps
 import androidx.compose.material.icons.outlined.Memory
+import androidx.compose.material.icons.outlined.Thermostat
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -61,6 +62,7 @@ fun PerformanceScreen(
                 onBackgroundManagerClick = { onNavigateToDetail("background_manager") },
                 onKernelManagerClick = { onNavigateToDetail("kernel_manager") },
                 onRamPlusClick = { onNavigateToDetail("ram_plus") },
+                onThermalCurveClick = { onNavigateToDetail("thermal_curve") },
                 modifier = Modifier.padding(innerPadding),
             )
         }
@@ -70,6 +72,7 @@ fun PerformanceScreen(
             onBackgroundManagerClick = { onNavigateToDetail("background_manager") },
             onKernelManagerClick = { onNavigateToDetail("kernel_manager") },
             onRamPlusClick = { onNavigateToDetail("ram_plus") },
+            onThermalCurveClick = { onNavigateToDetail("thermal_curve") },
             modifier = Modifier,
         )
     }
@@ -81,10 +84,14 @@ private fun PerformanceContent(
     onBackgroundManagerClick: () -> Unit,
     onKernelManagerClick: () -> Unit,
     onRamPlusClick: () -> Unit,
+    onThermalCurveClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val ramPlusSupported = remember {
         SystemProperties.getBoolean("persist.sys.ax_rp_supp", false)
+    }
+    val thermalCurveSupported = remember {
+        SystemProperties.getBoolean(THERMAL_CURVE_SUPPORTED_PROPERTY, false)
     }
 
     Column(
@@ -165,6 +172,31 @@ private fun PerformanceContent(
                     )
                 }
             } else {
+                Spacer(modifier = Modifier.weight(1f))
+            }
+        }
+
+        if (thermalCurveSupported) {
+            Spacer(modifier = Modifier.height(12.dp))
+
+            Row(
+                modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Max),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                FeatureCard(
+                    title = stringResource(R.string.thermal_curve),
+                    summary = stringResource(R.string.thermal_curve_summary),
+                    onClick = onThermalCurveClick,
+                    modifier = Modifier.weight(1f),
+                    illustrationColor = MaterialTheme.colorScheme.secondaryContainer,
+                ) {
+                    Icon(
+                        imageVector = outlinedIcons.Thermostat,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onSecondaryContainer,
+                        modifier = Modifier.size(36.dp),
+                    )
+                }
                 Spacer(modifier = Modifier.weight(1f))
             }
         }

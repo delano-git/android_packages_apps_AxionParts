@@ -467,6 +467,7 @@ private fun DetailScreen(
             )
         "kernel_manager" -> KernelManagerScreen(onBackClick = onBackClick)
         "ram_plus" -> RamPlusScreen(onBackClick = onBackClick)
+        "thermal_curve" -> ThermalCurveScreen(onBackClick = onBackClick)
         "app_optimization" -> AppOptimizationScreen(onBackClick = onBackClick)
         "app_picker" ->
             ManagedAppPickerScreen(
@@ -528,6 +529,7 @@ private fun DetailPaneContent(
             )
         "kernel_manager" -> KernelManagerScreen(onBackClick = onClose)
         "ram_plus" -> RamPlusScreen(onBackClick = onClose)
+        "thermal_curve" -> ThermalCurveScreen(onBackClick = onClose)
         "app_picker" ->
             ManagedAppPickerScreen(
                 titleRes = appPickerTitleRes,

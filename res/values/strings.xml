@@ -371,6 +371,23 @@
     <string name="background_manager_summary">Manage app freezing and background start limits</string>
     <string name="kernel_manager">Kernel Manager</string>
     <string name="kernel_manager_summary">Tune CPU and GPU frequency limits</string>
+
+    <!-- Throttling curve -->
+    <string name="thermal_curve">Throttling curve</string>
+    <string name="thermal_curve_summary">Choose how hard the CPU and GPU slow down as the device heats up</string>
+    <string name="thermal_curve_enable">Use custom throttling curve</string>
+    <string name="thermal_curve_enable_summary">Replaces the stock thermal service while on</string>
+    <string name="thermal_curve_cpu">CPU curve</string>
+    <string name="thermal_curve_gpu">GPU curve</string>
+    <string name="thermal_curve_preset">Preset</string>
+    <string name="thermal_curve_preset_summary">Start from a preset, then fine-tune the points</string>
+    <string name="thermal_curve_preset_default">Default</string>
+    <string name="thermal_curve_preset_cooler">Cooler</string>
+    <string name="thermal_curve_preset_performance">Performance</string>
+    <string name="thermal_curve_preset_custom">Custom</string>
+    <string name="thermal_curve_point">At %1$d °C</string>
+    <string name="thermal_curve_point_summary">Highest frequency allowed, as a share of the maximum</string>
+    <string name="thermal_curve_warning">While this is on, the stock thermal service is stopped and these curves are the only throttling the CPU and GPU get from software. Temperatures between the points are interpolated. Turn it off to hand control back.</string>
     <string name="ram_plus">RAM Plus</string>
     <string name="ram_plus_summary">Extend available memory with internal storage</string>
     <string name="ram_plus_configuration">Configuration</string>
